@@ -173,3 +173,6 @@ If point was already at that position, move point to beginning of line."
 (defun my-term-hook ()
   (goto-address-mode))
 (add-hook 'term-mode-hook 'my-term-hook)
+
+
+(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
