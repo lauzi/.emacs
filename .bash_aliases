@@ -9,3 +9,6 @@ alias ...='cd ../..'
 alias suspend='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
 
 alias time='time -p'
+
+alias update='sudo apt-get update; echo y | sudo apt-get upgrade'
+alias xelatex='xelatex -shell-escape'

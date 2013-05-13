@@ -176,3 +176,16 @@ If point was already at that position, move point to beginning of line."
 
 
 (setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+;; change backup files(*~) and autosave files (#*#) directory
+(defvar user-temporary-file-directory
+  (concat temporary-file-directory user-login-name "/"))
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist
+      `(("." . ,user-temporary-file-directory)
+        (,tramp-file-name-regexp nil)))
+(setq auto-save-list-file-prefix
+      (concat user-temporary-file-directory ".auto-saves-"))
+(setq auto-save-file-name-transforms
+      `((".*" ,user-temporary-file-directory t)))
