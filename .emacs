@@ -195,3 +195,10 @@ If point was already at that position, move point to beginning of line."
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+
+
+;; for smooth scrolling and disabling the automatical recentering of emacs when moving the cursor
+(setq scroll-margin 1
+    scroll-conservatively 0
+    scroll-up-aggressively 0.01
+    scroll-down-aggressively 0.01)
