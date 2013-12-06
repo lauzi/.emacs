@@ -85,10 +85,13 @@
 ;;; don't make #filename (http://d.hatena.ne.jp/TetsuOne/20080625/1214398899)
 (setq make-backup-files nil)
 
+;; http://stackoverflow.com/questions/235254
 (setq explicit-shell-file-name
-      "C:/Program Files (x86)/Git/bin/bash.exe")
+      "C:/Program Files (x86)/Git/bin/bash")
 (setq shell-file-name explicit-shell-file-name)
 (add-to-list 'exec-path "C:/Program Files (x86)/Git/bin")
+(setq explicit-bash-args '("--login" "-i"))
+(setenv "SHELL" shell-file-name)
 ;;; end Settings
 
 
