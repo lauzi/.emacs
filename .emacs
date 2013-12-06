@@ -1,6 +1,6 @@
 (setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
 
-(setq default-directory "/media/d/Dropbox")
+(setq default-directory "d:\Dropbox")
 
 ;;; highlight ()
 (show-paren-mode 1)
@@ -97,7 +97,7 @@ If point was already at that position, move point to beginning of line."
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(initial-buffer-choice "/media/d/Dropbox"))
+ '(initial-buffer-choice "D:\Dropbox"))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -122,10 +122,6 @@ If point was already at that position, move point to beginning of line."
 				   TeX-show-compilation t)
 			     (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)
 			     ))
-
-;; git-emacs
-(add-to-list 'load-path "~/.emacs.d/git-emacs/")
-(require 'git-emacs)
 
 ;; auto-refresh files
 (global-auto-revert-mode t)
@@ -202,3 +198,10 @@ If point was already at that position, move point to beginning of line."
     scroll-conservatively 0
     scroll-up-aggressively 0.01
     scroll-down-aggressively 0.01)
+
+;; Magit repo
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;; Set font
+(set-face-attribute 'default nil :font "Consolas")
