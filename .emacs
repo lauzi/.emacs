@@ -84,6 +84,11 @@
 
 ;;; don't make #filename (http://d.hatena.ne.jp/TetsuOne/20080625/1214398899)
 (setq make-backup-files nil)
+
+(setq explicit-shell-file-name
+      "C:/Program Files (x86)/Git/bin/bash.exe")
+(setq shell-file-name explicit-shell-file-name)
+(add-to-list 'exec-path "C:/Program Files (x86)/Git/bin")
 ;;; end Settings
 
 

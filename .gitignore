@@ -1,3 +1,5 @@
+*~
 .emacs.d/elpa/*
 .emacs.d/session*
 .emacs.d/auto-save-list/*
+.bash_history
