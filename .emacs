@@ -46,6 +46,7 @@
 (add-to-list 'default-frame-alist '(width . 80))
 (setq kill-whole-line t) ; makes kill-line remove whole line
 
+
 ;start smart-beginning-of-line
 (defun smart-beginning-of-line ()
   "Move point to first non-whitespace character or beginning-of-line.
@@ -61,6 +62,7 @@ If point was already at that position, move point to beginning of line."
 (global-set-key "\C-a" 'smart-beginning-of-line)
 ;end smart-beginning-of-line
 
+
 ;start qiang-copy-line
 (defun qiang-copy-line (arg)
   "Copy lines (as many as prefix argument) in the kill ring"
@@ -72,16 +74,19 @@ If point was already at that position, move point to beginning of line."
 (global-set-key "\M-k" 'qiang-copy-line)
 ;end qiang-copy-line
 
+
 (global-set-key "\M-r" 'replace-string)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 (global-unset-key "\C-z")
 
+
 ; begin auto-insert for .sh
 (define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
 (add-hook 'find-file-hooks 'auto-insert)
+
 
 ;; C - ' is not a valid ascii code
 (global-set-key [(control ?\')] 'other-window)
@@ -119,9 +124,8 @@ If point was already at that position, move point to beginning of line."
 ;; auto-refresh files
 (global-auto-revert-mode t)
 
-
-;; python
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; lambda mode is for python, changes lambda => ,\ symbol
 (require 'lambda-mode)
 (add-hook 'python-mode-hook #'lambda-mode 1)
@@ -186,12 +190,6 @@ If point was already at that position, move point to beginning of line."
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
 
-;; for smooth scrolling and disabling the automatical recentering of emacs when moving the cursor
-(setq scroll-margin 1
-    scroll-conservatively 0
-    scroll-up-aggressively 0.01
-    scroll-down-aggressively 0.01)
-
 ;; Magit repo
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -199,14 +197,16 @@ If point was already at that position, move point to beginning of line."
 ;; Set font
 (set-face-attribute 'default nil :font "Consolas-12")
 
-;; Theme
-
-;(require 'color-theme)
-;(eval-after-load "color-theme"
-;    '(progn
-;         (color-theme-initialize)
-;	 (load-file "~/.emacs.d/lisp/color-theme-blackboard.el")
-;         (color-theme-blackboard)))
-
-(load "~/.emacs.d/color-theme-molokai.el")
+; (color-theme-blackboard)
+(load "color-theme-molokai")
 (color-theme-molokai)
+
+;; Disable toolbar
+(tool-bar-mode -1)
+
+;; Disable input methods
+(global-unset-key (kbd "C-\\"))
+
+
+(load "smooth-scroll")
+(smooth-scroll-mode t)
