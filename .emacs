@@ -1,6 +1,6 @@
 (setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
 
-(setq default-directory "d:\Dropbox")
+(setq default-directory "D:\Dropbox")
 
 ;;; highlight ()
 (show-paren-mode 1)
@@ -208,5 +208,5 @@ If point was already at that position, move point to beginning of line."
 (global-unset-key (kbd "C-\\"))
 
 
-(load "smooth-scroll")
-(smooth-scroll-mode t)
+;(load "smooth-scroll")
+;(smooth-scroll-mode t)
