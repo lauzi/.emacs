@@ -1,23 +1,93 @@
-(setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
+;; use package.el to install packages
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
+(eval-when-compile (require 'cl))
+
+(defvar my-packages
+  '(auctex coffee-mode expand-region
+	   gist haskell-mode inf-ruby
+	   magit magit-push-remote markdown-mode
+	   paredit python rainbow-mode
+	   volatile-highlights coffee-mode
+	   smooth-scrolling scala-mode2
+	   dired+)
+  "A list of packages to ensure are installed at launch.")
+
+(package-initialize)
+;; check if the packages is installed; if not, install it.
+(mapc
+ (lambda (package)
+   (or (package-installed-p package)
+       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+           (package-install package))))
+ my-packages)
+;; end package.el
+
+
+
+;; Settings
+(setq user-full-name "LauZi")
+(setq user-mail-address "st61112@gmail.com")
+
+(setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
 (setq default-directory "D:\Dropbox")
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+(global-set-key "\M-r" 'replace-string)
+(global-set-key "\M-g" 'goto-line)
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+(global-unset-key "\C-z")
+
+;; Disable input methods
+(global-unset-key (kbd "C-\\"))
+
+;; key bindings to adjust frame size
+(global-set-key (kbd "<C-up>") 'shrink-window)
+(global-set-key (kbd "<C-down>") 'enlarge-window)
+(global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+
 
 ;;; highlight ()
 (show-paren-mode 1)
 
-;;; disable scrool bar
 (scroll-bar-mode -1)
+(setq column-number-mode t)
+(setq size-indication-mode t)
 
-;;;line number
-;;http://www.pshared.net/diary/20080519.html
+(set-face-attribute 'default nil :font "Consolas-12")
+
+(load "color-theme-molokai")
+(color-theme-molokai)
+
+(tool-bar-mode -1)
+
+;;; line number (http://www.pshared.net/diary/20080519.html)
 (require 'linum)
 (global-linum-mode t)
 ;(setq linum-format "%5d | ")
 
-;;; don't make #filename
-;;http://d.hatena.ne.jp/TetsuOne/20080625/1214398899
-(setq make-backup-files nil)
 
+;; auto-refresh files
+(global-auto-revert-mode t)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; ansi-term
+(global-set-key [f1] 'shell)
+
+;;; don't make #filename (http://d.hatena.ne.jp/TetsuOne/20080625/1214398899)
+(setq make-backup-files nil)
+;;; end Settings
+
+
+;; Addons
 (defadvice comment-or-uncomment-region (before slickcomment activate compile)
   "When called interactively with no active region, toggle comment on current line instead."
   (interactive
@@ -75,13 +145,6 @@ If point was already at that position, move point to beginning of line."
 ;end qiang-copy-line
 
 
-(global-set-key "\M-r" 'replace-string)
-(global-set-key "\M-g" 'goto-line)
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-(global-unset-key "\C-z")
-
-
 ; begin auto-insert for .sh
 (define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
@@ -91,17 +154,9 @@ If point was already at that position, move point to beginning of line."
 ;; C - ' is not a valid ascii code
 (global-set-key [(control ?\')] 'other-window)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(initial-buffer-choice "D:\Dropbox"))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
+
 
 ;; AUCTeX settings
 (setq TeX-auto-save t)
@@ -121,28 +176,11 @@ If point was already at that position, move point to beginning of line."
 			     (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)
 			     ))
 
-;; auto-refresh files
-(global-auto-revert-mode t)
-
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; lambda mode is for python, changes lambda => ,\ symbol
 (require 'lambda-mode)
 (add-hook 'python-mode-hook #'lambda-mode 1)
 (setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
-
-
-;; scala-mode-2
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-(unless (package-installed-p 'scala-mode2)
-  (package-refresh-contents) (package-install 'scala-mode2))
-
-
-;; ansi-term
-(global-set-key [f1] 'shell)
 
 ;; removes buffer after ansi-term closes
 (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
@@ -167,7 +205,7 @@ If point was already at that position, move point to beginning of line."
   (goto-address-mode))
 (add-hook 'term-mode-hook 'my-term-hook)
 
-
+;; detect octave files
 (setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
 
 ;; change backup files(*~) and autosave files (#*#) directory
@@ -182,31 +220,3 @@ If point was already at that position, move point to beginning of line."
       (concat user-temporary-file-directory ".auto-saves-"))
 (setq auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
-
-;; key bindings to adjust frame size
-(global-set-key (kbd "<C-up>") 'shrink-window)
-(global-set-key (kbd "<C-down>") 'enlarge-window)
-(global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
-(global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
-
-
-;; Magit repo
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-;; Set font
-(set-face-attribute 'default nil :font "Consolas-12")
-
-; (color-theme-blackboard)
-(load "color-theme-molokai")
-(color-theme-molokai)
-
-;; Disable toolbar
-(tool-bar-mode -1)
-
-;; Disable input methods
-(global-unset-key (kbd "C-\\"))
-
-
-;(load "smooth-scroll")
-;(smooth-scroll-mode t)
