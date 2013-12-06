@@ -13,7 +13,8 @@
 	   paredit python rainbow-mode
 	   volatile-highlights coffee-mode
 	   smooth-scrolling scala-mode2
-	   dired+)
+	   dired+ color-theme color-theme-molokai pretty-mode
+	   powershell)
   "A list of packages to ensure are installed at launch.")
 
 (package-initialize)
@@ -63,7 +64,6 @@
 
 (set-face-attribute 'default nil :font "Consolas-12")
 
-(load "color-theme-molokai")
 (color-theme-molokai)
 
 (tool-bar-mode -1)
@@ -176,11 +176,6 @@ If point was already at that position, move point to beginning of line."
 			     (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)
 			     ))
 
-
-;; lambda mode is for python, changes lambda => ,\ symbol
-(require 'lambda-mode)
-(add-hook 'python-mode-hook #'lambda-mode 1)
-(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
 
 ;; removes buffer after ansi-term closes
 (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
