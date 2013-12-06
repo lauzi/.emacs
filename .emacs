@@ -78,13 +78,6 @@ If point was already at that position, move point to beginning of line."
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 (global-unset-key "\C-z")
 
-(require 'color-theme)
-(eval-after-load "color-theme"
-    '(progn
-         (color-theme-initialize)
-	 (load-file "~/.emacs.d/lisp/color-theme-blackboard.el")
-         (color-theme-blackboard)))
-
 ; begin auto-insert for .sh
 (define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
@@ -204,4 +197,16 @@ If point was already at that position, move point to beginning of line."
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; Set font
-(set-face-attribute 'default nil :font "Consolas")
+(set-face-attribute 'default nil :font "Consolas-12")
+
+;; Theme
+
+;(require 'color-theme)
+;(eval-after-load "color-theme"
+;    '(progn
+;         (color-theme-initialize)
+;	 (load-file "~/.emacs.d/lisp/color-theme-blackboard.el")
+;         (color-theme-blackboard)))
+
+(load "~/.emacs.d/color-theme-molokai.el")
+(color-theme-molokai)
