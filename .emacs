@@ -92,6 +92,8 @@
 (add-to-list 'exec-path "C:/Program Files (x86)/Git/bin")
 (setq explicit-bash-args '("--login" "-i"))
 (setenv "SHELL" shell-file-name)
+
+(require 'dired+)
 ;;; end Settings
 
 
