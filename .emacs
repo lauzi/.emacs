@@ -9,7 +9,8 @@
 (defvar my-packages
   '(auctex coffee-mode expand-region
 	   gist haskell-mode inf-ruby
-	   magit magit-push-remote markdown-mode
+;; 	   magit magit-push-remote ;; does not work on Windows
+	   markdown-mode
 	   paredit python rainbow-mode
 	   volatile-highlights coffee-mode
 	   smooth-scrolling scala-mode2
@@ -30,6 +31,8 @@
 
 
 ;; Settings
+(setq tab-width 4)
+
 (setq user-full-name "LauZi")
 (setq user-mail-address "st61112@gmail.com")
 
@@ -54,6 +57,17 @@
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
+;; match-paren defined below
+(global-set-key "%" 'match-paren)
+
+(global-set-key [home] 'smart-beginning-of-line)
+(global-set-key "\C-a" 'smart-beginning-of-line)
+
+(global-set-key "\M-k" 'qiang-copy-line)
+
+(global-set-key [f1] 'shell)
+
+(global-set-key [(control ?\')] 'other-window)
 
 ;;; highlight ()
 (show-paren-mode 1)
@@ -73,6 +87,9 @@
 (global-linum-mode t)
 ;(setq linum-format "%5d | ")
 
+(mouse-avoidance-mode 'animate)
+
+(setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
 ;; auto-refresh files
 (global-auto-revert-mode t)
@@ -80,7 +97,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; ansi-term
-(global-set-key [f1] 'shell)
 
 ;;; don't make #filename (http://d.hatena.ne.jp/TetsuOne/20080625/1214398899)
 (setq make-backup-files nil)
@@ -111,7 +127,6 @@
 
                (setq c-indent-level 4)
                (setq c-tab-width 4)
-               (setq tab-width 4)
                (setq c-basic-offset tab-width)
                (setq indent-tabs-mode nil) ;; force only spaces for indentation
 	       (define-key c-mode-base-map [(return)] 'newline-and-indent)
@@ -138,8 +153,6 @@ If point was already at that position, move point to beginning of line."
     (back-to-indentation)
     (and (= oldpos (point))
          (beginning-of-line))))
-(global-set-key [home] 'smart-beginning-of-line)
-(global-set-key "\C-a" 'smart-beginning-of-line)
 ;end smart-beginning-of-line
 
 
@@ -151,7 +164,6 @@ If point was already at that position, move point to beginning of line."
                   (line-end-position))
 
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
-(global-set-key "\M-k" 'qiang-copy-line)
 ;end qiang-copy-line
 
 
@@ -160,9 +172,6 @@ If point was already at that position, move point to beginning of line."
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
 (add-hook 'find-file-hooks 'auto-insert)
 
-
-;; C - ' is not a valid ascii code
-(global-set-key [(control ?\')] 'other-window)
 (custom-set-variables
  '(initial-buffer-choice "D:\Dropbox"))
 (custom-set-faces)
@@ -225,3 +234,13 @@ If point was already at that position, move point to beginning of line."
       (concat user-temporary-file-directory ".auto-saves-"))
 (setq auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
+
+;; Jump to corresponding paren
+;; http://docs.huihoo.com/homepage/shredderyin/emacs_elisp.html
+
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+	(t (self-insert-command (or arg 1)))))
