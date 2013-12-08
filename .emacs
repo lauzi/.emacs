@@ -127,6 +127,7 @@
 
                (setq c-indent-level 4)
                (setq c-tab-width 4)
+	       (setq tab-width 4)
                (setq c-basic-offset tab-width)
                (setq indent-tabs-mode nil) ;; force only spaces for indentation
 	       (define-key c-mode-base-map [(return)] 'newline-and-indent)
