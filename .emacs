@@ -37,7 +37,10 @@
 (setq user-mail-address "st61112@gmail.com")
 
 (setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
-(setq default-directory "D:\Dropbox")
+
+(setq default-directory "G:\\")
+
+(custom-set-variables '(initial-buffer-choice "G:\\"))
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
@@ -110,6 +113,9 @@
 (setenv "SHELL" shell-file-name)
 
 (require 'dired+)
+
+;; FUCK VC-MODE
+(setq vc-handled-backends ())
 ;;; end Settings
 
 
@@ -173,8 +179,6 @@ If point was already at that position, move point to beginning of line."
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
 (add-hook 'find-file-hooks 'auto-insert)
 
-(custom-set-variables
- '(initial-buffer-choice "D:\Dropbox"))
 (custom-set-faces)
 
 
