@@ -7,22 +7,32 @@
 (eval-when-compile (require 'cl))
 
 (defvar my-packages
-  '(auctex coffee-mode expand-region
-	   gist haskell-mode inf-ruby
-;; 	   magit magit-push-remote ;; does not work on Windows
-	   markdown-mode
-	   paredit python rainbow-mode
-	   volatile-highlights coffee-mode
-	   smooth-scrolling scala-mode2
-	   dired+ color-theme color-theme-molokai pretty-mode
-	   powershell)
+  '(
+;; faces
+    color-theme color-theme-molokai
+
+;; behaviors
+    smooth-scrolling
+
+;; utilities
+    dired+ gist powershell
+;;; magit magit-push-remote
+
+;; global text exts
+    paredit rainbow-mode volatile-highlights
+    pretty-mode
+
+;; languages
+    auctex coffee-mode haskell-mode inf-ruby
+    markdown-mode python coffee-mode scala-mode2
+)
   "A list of packages to ensure are installed at launch.")
 
 (package-initialize)
 ;; check if the packages is installed; if not, install it.
 (let ((xs (remove-if 'package-installed-p my-packages)))
   (and xs
-    (progn 
+    (progn
       (package-refresh-contents)
       (mapc 'package-install xs))))
 ;; end package.el
@@ -30,8 +40,6 @@
 
 
 ;; Settings
-(setq tab-width 4)
-
 (setq user-full-name "LauZi")
 (setq user-mail-address "st61112@gmail.com")
 
@@ -69,46 +77,44 @@
 (global-set-key [(control ?\')] 'other-window)
 
 ;;; highlight ()
-(show-paren-mode 1)
+(color-theme-molokai)
+(set-face-attribute 'default nil :font "Consolas-12")
+(setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
+
+(tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+
+(show-paren-mode 1)
+(setq tab-width 4)
+
+
+(require 'linum)
+(global-linum-mode t)
+
 (setq column-number-mode t)
 (setq size-indication-mode t)
 
-(set-face-attribute 'default nil :font "Consolas-12")
 
-(color-theme-molokai)
-
-(tool-bar-mode -1)
-
-;;; line number (http://www.pshared.net/diary/20080519.html)
-(require 'linum)
-(global-linum-mode t)
-;(setq linum-format "%5d | ")
+(require 'dired+)
 
 (mouse-avoidance-mode 'animate)
 
-(setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
-;; auto-refresh files
-(global-auto-revert-mode t)
+
+(global-auto-revert-mode t) ;; auto-refresh files
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; ansi-term
-
-;;; don't make #filename (http://d.hatena.ne.jp/TetsuOne/20080625/1214398899)
 (setq make-backup-files nil)
 
 ;; http://stackoverflow.com/questions/235254
-(setq explicit-shell-file-name
-      "C:/Program Files (x86)/Git/bin/bash")
+(setq explicit-shell-file-name "C:/Program Files (x86)/Git/bin/bash")
 (setq shell-file-name explicit-shell-file-name)
 (add-to-list 'exec-path "C:/Program Files (x86)/Git/bin")
 (setq explicit-bash-args '("--login" "-i"))
 (setenv "SHELL" shell-file-name)
-
-(require 'dired+)
 ;;; end Settings
 
 
@@ -219,8 +225,10 @@ If point was already at that position, move point to beginning of line."
   (goto-address-mode))
 (add-hook 'term-mode-hook 'my-term-hook)
 
+
 ;; detect octave files
 (setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
 
 ;; change backup files(*~) and autosave files (#*#) directory
 (defvar user-temporary-file-directory
