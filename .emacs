@@ -258,3 +258,14 @@ If point was already at that position, move point to beginning of line."
 	(t (self-insert-command (or arg 1)))))
 
 (custom-set-variables '(coffee-tab-width 4))
+
+;; haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+(eval-after-load "haskell-mode"
+    '(define-key haskell-mode-map (kbd "<f9>") 'haskell-compile))
+
+(eval-after-load "haskell-cabal"
+    '(define-key haskell-cabal-mode-map (kbd "<f9>") 'haskell-compile))
