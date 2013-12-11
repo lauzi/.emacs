@@ -45,9 +45,7 @@
 
 (setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
 
-(setq default-directory "G:\\")
-
-(custom-set-variables '(initial-buffer-choice "G:\\"))
+(load "~/.emacs.d/local")
 
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
