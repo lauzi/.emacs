@@ -3,6 +3,9 @@
 
 Setup
 -----
+Windows HOME register
+http://www.emacswiki.org/emacs/MsWindowsRegistry
+
 ~/.emacs.d/local.el
 
 ```elisp
