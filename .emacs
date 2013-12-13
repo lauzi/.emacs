@@ -12,7 +12,7 @@
     color-theme color-theme-molokai
 
 ;; behaviors
-    smooth-scrolling
+    smooth-scrolling expand-region
 
 ;; utilities
     dired+ gist powershell
