@@ -12,7 +12,7 @@
     color-theme color-theme-molokai
 
 ;; behaviors
-    smooth-scrolling expand-region
+    smooth-scrolling expand-region icicles
 
 ;; utilities
     dired+ gist powershell
@@ -102,6 +102,8 @@
 
 (mouse-avoidance-mode 'animate)
 
+(require 'icicles)
+(icy-mode 1)
 
 
 (global-auto-revert-mode t) ;; auto-refresh files
@@ -267,3 +269,26 @@ If point was already at that position, move point to beginning of line."
 
 (eval-after-load "haskell-cabal"
     '(define-key haskell-cabal-mode-map (kbd "<f9>") 'haskell-compile))
+
+
+;; uniquify buffer names
+(require 'uniquify)
+(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
+; (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
+;; tab now omit those extensions
+(setq completion-ignored-extensions
+      (append completion-ignored-extensions
+	      '(".o" ".lo" ".mh" ".elc" "~" ".bak" ".err"
+		".bin" ".lbin" ".fasl"
+		".dvi" ".toc" ".aux" ".lof" ".blg" ".bbl"
+		".glo" ".idx" ".lot" ".dvi" ".ps"
+		".cache/" ".dropbox/" ".git/"
+		".BIN/" "System Volume Information/")))  ;; trailing / means directory
+
+;; do not list those shit in dired+
+(add-hook 'dired-mode-hook
+	  (lambda ()
+	    (dired-omit-mode 1)))
+(setq dired-omit-files
+      (concat dired-omit-files "\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*"))
