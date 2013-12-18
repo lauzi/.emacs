@@ -302,3 +302,6 @@ If point was already at that position, move point to beginning of line."
       "^\\.?#\\|^\\.$^\\.?#\\|^\\.$\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*")
 
 (add-hook 'prog-mode-hook (lambda () (idle-highlight t)))
+
+(require 'undo-tree)
+(global-undo-tree-mode)
