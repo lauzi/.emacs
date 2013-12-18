@@ -78,7 +78,7 @@
 
 (global-set-key [f1] 'shell)
 
-(global-set-key [(control ?\')] 'other-window)
+(global-set-key [(control ?\')] 'other-window)  ;; C-'
 
 (require 'lacarte)
 (global-set-key [?\e ?\M-x] 'lacarte-execute-command)  ;; ESC M-x
@@ -298,4 +298,4 @@ If point was already at that position, move point to beginning of line."
 	  (lambda ()
 	    (dired-omit-mode 1)))
 (setq dired-omit-files
-      (concat dired-omit-files "\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*"))
+      "^\\.?#\\|^\\.$^\\.?#\\|^\\.$\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*")
