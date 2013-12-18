@@ -51,7 +51,7 @@
 (setq user-full-name "LauZi")
 (setq user-mail-address "st61112@gmail.com")
 
-(setq load-path  (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
+(setq load-path (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
 
 (load "~/.emacs.d/local")
 
@@ -286,6 +286,7 @@ If point was already at that position, move point to beginning of line."
 
 ;; uniquify buffer names
 (require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)  ; must set, or uniquify will not work
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 ; (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
