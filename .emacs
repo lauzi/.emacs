@@ -12,8 +12,9 @@
     color-theme color-theme-molokai
 
 ;; behaviors
-    smooth-scrolling expand-region icicles
+    smooth-scrolling expand-region
     undo-tree
+    icicles lacarte
 
 ;; utilities
     dired+ gist powershell
@@ -48,17 +49,18 @@
 
 (load "~/.emacs.d/local")
 
+;; Disable input methods
+(global-unset-key (kbd "C-\\"))
+
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-\\") 'er/expand-region)
 
 (global-set-key "\M-r" 'replace-string)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 (global-unset-key "\C-z")
-
-;; Disable input methods
-(global-unset-key (kbd "C-\\"))
 
 ;; key bindings to adjust frame size
 (global-set-key (kbd "<C-up>") 'shrink-window)
@@ -77,6 +79,10 @@
 (global-set-key [f1] 'shell)
 
 (global-set-key [(control ?\')] 'other-window)
+
+(require 'lacarte)
+(global-set-key [?\e ?\M-x] 'lacarte-execute-command)  ;; ESC M-x
+(global-set-key [?\M-`] 'lacarte-execute-command)      ;; M-`
 
 ;;; highlight ()
 (color-theme-molokai)
