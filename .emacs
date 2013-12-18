@@ -13,6 +13,7 @@
 
 ;; behaviors
     smooth-scrolling expand-region icicles
+    undo-tree
 
 ;; utilities
     dired+ gist powershell
