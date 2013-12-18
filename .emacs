@@ -13,6 +13,7 @@
 
 ;; behaviors
     smooth-scrolling expand-region icicles
+    idle-highlight iedit
 
 ;; utilities
     dired+ gist powershell
@@ -292,3 +293,6 @@ If point was already at that position, move point to beginning of line."
 	    (dired-omit-mode 1)))
 (setq dired-omit-files
       (concat dired-omit-files "\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*"))
+
+
+(add-hook 'prog-mode-hook (lambda () (idle-highlight t)))
