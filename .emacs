@@ -305,6 +305,7 @@ If point was already at that position, move point to beginning of line."
 		".bin" ".lbin" ".fasl"
 		".dvi" ".toc" ".aux" ".lof" ".blg" ".bbl"
 		".glo" ".idx" ".lot" ".dvi" ".ps"
+		".hi"
 		".cache/" ".dropbox/" ".git/"
 		".BIN/" "System Volume Information/")))  ;; trailing / means directory
 
