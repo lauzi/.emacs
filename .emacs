@@ -16,6 +16,7 @@
     idle-highlight iedit
     undo-tree
     icicles lacarte
+    multiple-cursors
 
 ;; utilities
     dired+ gist powershell
@@ -61,12 +62,19 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-\\") 'er/expand-region)
+(global-set-key (kbd "C-|") 'er/contract-region)
 
 (global-set-key "\M-r" 'replace-string)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 (global-unset-key "\C-z")
+
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'md/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; key bindings to adjust frame size
 (global-set-key (kbd "<C-up>") 'shrink-window)

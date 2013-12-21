@@ -19,3 +19,8 @@ http://www.emacswiki.org/emacs/MsWindowsRegistry
 * `b` `f` 左右切換
 * `t` 顯示時間戳
 * `q` 退出
+
+### Multiple-cursors ###
+* `C-S-c C-S-c` Add cursor to each line selected
+* `C->` / `C-<` Mark next/last occurence
+* `C-C C-<` Mark all like this
