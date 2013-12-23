@@ -205,7 +205,12 @@ If point was already at that position, move point to beginning of line."
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
 (add-hook 'find-file-hooks 'auto-insert)
 
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 
 ;; AUCTeX settings
@@ -278,7 +283,14 @@ If point was already at that position, move point to beginning of line."
 	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
 	(t (self-insert-command (or arg 1)))))
 
-(custom-set-variables '(coffee-tab-width 4))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 4)
+ '(icicle-command-abbrev-alist (quote ((package-list-packages plp 0))))
+ '(initial-buffer-choice "D:\\git"))
 
 ;; haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
