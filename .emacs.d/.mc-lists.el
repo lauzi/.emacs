@@ -4,8 +4,12 @@
 (setq mc/cmds-to-run-for-all
       '(
 	haskell-indentation-delete-char
+	icicle-yank-maybe-completing
+	smart-beginning-of-line
 	))
 
 (setq mc/cmds-to-run-once
       '(
+	haskell-indentation-delete-backward-char
+	icicle-goto-marker-or-set-mark-command
 	))
