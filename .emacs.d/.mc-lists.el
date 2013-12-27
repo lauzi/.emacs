@@ -5,6 +5,8 @@
       '(
 	haskell-indentation-delete-char
 	icicle-yank-maybe-completing
+	indent-for-tab-command
+	match-paren
 	smart-beginning-of-line
 	))
 

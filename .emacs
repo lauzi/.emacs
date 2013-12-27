@@ -74,7 +74,12 @@
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-S-c C-<") 'mc/mark-all-like-this)
+
+(global-set-key (kbd "C-.") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C-,") 'mc/mark-previous-word-like-this)
+(global-set-key (kbd "C-c C-,") 'mc/mark-all-words-like-this)
+
 
 ;; key bindings to adjust frame size
 (global-set-key (kbd "<C-up>") 'shrink-window)
