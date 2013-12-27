@@ -23,4 +23,6 @@ http://www.emacswiki.org/emacs/MsWindowsRegistry
 ### Multiple-cursors ###
 * `C-S-c C-S-c` Add cursor to each line selected
 * `C->` / `C-<` Mark next/last occurence
-* `C-C C-<` Mark all like this
+* `C-S-C C-<` Mark all like this
+* `C-.` / `C-,` Mark next/last word like this
+* `C-C C-,` Mark all words like this
