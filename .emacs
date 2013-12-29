@@ -333,7 +333,7 @@ If point was already at that position, move point to beginning of line."
 (setq dired-omit-files
       "^\\.?#\\|^\\.$^\\.?#\\|^\\.$\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*\\|.git\\|.*\\.hi")
 
-(add-hook 'prog-mode-hook (lambda () (idle-highlight t)))
+; (add-hook 'prog-mode-hook (lambda () (idle-highlight t)))
 
 (require 'undo-tree)
 (global-undo-tree-mode)
