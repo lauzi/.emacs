@@ -69,6 +69,7 @@
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 (global-unset-key "\C-z")
+(global-unset-key (kbd "C-x C-z"))
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -330,7 +331,7 @@ If point was already at that position, move point to beginning of line."
 	  (lambda ()
 	    (dired-omit-mode 1)))
 (setq dired-omit-files
-      "^\\.?#\\|^\\.$^\\.?#\\|^\\.$\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*")
+      "^\\.?#\\|^\\.$^\\.?#\\|^\\.$\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*\\|.git\\|.*\\.hi")
 
 (add-hook 'prog-mode-hook (lambda () (idle-highlight t)))
 

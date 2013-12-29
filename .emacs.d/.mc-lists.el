@@ -8,10 +8,10 @@
 	indent-for-tab-command
 	match-paren
 	smart-beginning-of-line
+	haskell-indentation-delete-backward-char
 	))
 
 (setq mc/cmds-to-run-once
       '(
-	haskell-indentation-delete-backward-char
 	icicle-goto-marker-or-set-mark-command
 	))
