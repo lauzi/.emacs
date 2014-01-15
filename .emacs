@@ -24,7 +24,7 @@
 
 ;; global text exts
     paredit rainbow-mode volatile-highlights
-    pretty-mode
+    pretty-mode smartparens
 
 ;; languages
     auctex coffee-mode haskell-mode enh-ruby-mode inf-ruby
@@ -351,3 +351,13 @@ If point was already at that position, move point to beginning of line."
 
 (setq enh-ruby-bounce-deep-indent t)
 (setq enh-ruby-hanging-brace-indent-level 2)
+
+
+; smartparens
+(require 'smartparens-config)
+(require 'smartparens-ruby)
+(smartparens-global-mode)
+(show-smartparens-global-mode t)
+(sp-with-modes '(rhtml-mode)
+(sp-local-pair "<" ">")
+(sp-local-pair "<%" "%>"))
