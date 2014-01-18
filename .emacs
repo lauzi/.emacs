@@ -89,7 +89,7 @@
 (global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
 ;; match-paren defined below
-(global-set-key "%" 'match-paren)
+(global-set-key "C-%" 'match-paren)
 
 (global-set-key [home] 'smart-beginning-of-line)
 (global-set-key "\C-a" 'smart-beginning-of-line)
