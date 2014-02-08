@@ -10,6 +10,7 @@
   '(
 ;; faces
     color-theme color-theme-molokai
+    nyan-mode
 
 ;; behaviors
     smooth-scrolling expand-region
@@ -109,6 +110,8 @@
 (set-face-attribute 'default nil :font "Consolas-12")
 (setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
+
+(nyan-mode 1)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
