@@ -26,3 +26,8 @@ http://www.emacswiki.org/emacs/MsWindowsRegistry
 * `C-S-C C-<` Mark all like this
 * `C-.` / `C-,` Mark next/last word like this
 * `C-C C-,` Mark all words like this
+
+### xkcd ###
+* `r` Load a random xkcd
+* `t` Show alt-text in the minibuffer
+* `e` Link to explain-xkcd

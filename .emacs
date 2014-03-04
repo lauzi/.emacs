@@ -20,7 +20,7 @@
     multiple-cursors
 
 ;; utilities
-    dired+ gist powershell
+    dired+ gist powershell xkcd
 ;;; magit magit-push-remote
 
 ;; global text exts
