@@ -1,16 +1,16 @@
 # .emacs #
 
 ## Setup ##
-Windows HOME register
-http://www.emacswiki.org/emacs/MsWindowsRegistry
+[Windows HOME register](http://www.emacswiki.org/emacs/MsWindowsRegistry)
 
 ~/.emacs.d/local.el
-
 ```elisp
 (setq default-directory "D:\\git")
 
 (custom-set-variables '(initial-buffer-choice "D:\\git"))
 ```
+
+[DLLs needed for picture viewing](https://code.google.com/p/emacs4win/source/browse/#git%2Fdlls)
 
 ## How To ##
 ### Undo-tree ###
