@@ -174,6 +174,7 @@
 	       (setq tab-width 4)
                (setq c-basic-offset tab-width)
                (setq indent-tabs-mode nil) ;; force only spaces for indentation
+	       (setq abbrev-mode nil)
 	       (define-key c-mode-base-map [(return)] 'newline-and-indent)
 	       (define-key c-mode-base-map [(f9)] 'compile)
 	       (define-key c-mode-base-map [(meta \')] 'c-indent-command)
@@ -307,6 +308,8 @@ If point was already at that position, move point to beginning of line."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+(setq haskell-font-lock-symbols t)
 
 (eval-after-load "haskell-mode"
     '(define-key haskell-mode-map (kbd "<f9>") 'haskell-compile))
