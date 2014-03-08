@@ -3,6 +3,7 @@
 .emacs.d/elpa/*
 .emacs.d/session*
 .emacs.d/auto-save-list/*
+.emacs.d/eshell/*
 .bash_history
 
 .emacs.d/.mc-lists.el
@@ -11,3 +12,5 @@
 .emacs.d/url/cookies
 
 .ido.last
+
+*flycheck*
