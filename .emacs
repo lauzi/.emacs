@@ -10,29 +10,43 @@
   '(
 ;; faces
     color-theme color-theme-molokai
-    nyan-mode smart-mode-line
+    nyan-mode
+    smart-mode-line
 
 ;; behaviors
-    smooth-scrolling expand-region
-    idle-highlight iedit
+    smooth-scrolling
+    expand-region
+    idle-highlight
+    iedit
     undo-tree
     icicles lacarte
     multiple-cursors
     ido-vertical-mode ido-hacks ido-better-flex ido-ubiquitous flex-isearch ; flex-isearch: ido for isearch
 
 ;; utilities
-    dired+ gist powershell xkcd
+    dired+
+    gist
+    powershell
+    xkcd
     magit magit-push-remote
 
 ;; global text exts
-    paredit rainbow-mode volatile-highlights
-    pretty-mode smartparens
+    paredit
+    rainbow-mode
+    volatile-highlights
+    pretty-mode
+    smartparens
     flycheck flycheck-haskell
     yasnippet
 
 ;; languages
-    auctex coffee-mode haskell-mode enh-ruby-mode inf-ruby
-    markdown-mode python coffee-mode scala-mode2
+    auctex
+    coffee-mode
+    enh-ruby-mode inf-ruby
+    markdown-mode
+    python
+    scala-mode2
+    haskell-mode shm ; Structured-Haskell-Mode
 )
   "A list of packages to ensure are installed at launch.")
 
@@ -308,6 +322,9 @@ If point was already at that position, move point to beginning of line."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+;(setq shm-program-name "C:\\Users\\LauZi\\appdata\\roaming\\cabal\\bin\\structured-haskell-mode")
+(add-hook 'haskell-mode-hook 'structured-haskell-mode)
 
 (setq haskell-font-lock-symbols t)
 

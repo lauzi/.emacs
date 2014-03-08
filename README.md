@@ -46,4 +46,15 @@
 * `C-j` Create file
 
 ### Magit ###
-[Cheatsheet](http://daemianmack.com/magit-cheatsheet.html)
+* [Cheatsheet](http://daemianmack.com/magit-cheatsheet.html)
+
+
+### structured-haskell-mode ###
+* [GitHub Repo](https://github.com/chrisdone/structured-haskell-mode)
+* Setup:
+  1. ```bash
+$ git clone https://github.com/chrisdone/structured-haskell-mode.git
+$ cd structured-haskell-mode
+$ cabal install
+```
+  2. Add `C:\Users\LauZi\AppData\Roaming\Cabal\bin\` to `PATH`
