@@ -37,7 +37,7 @@
 
 ### IDO ###
 * `Enter` Current selection
-* `C-n`, `C-p` Navigating
+* `C-s`, `C-r` Navigating
 * `M-n`, `M-p` Change to previous/next directories in history
 * `M-s` Search for file matching input
 * `C-SPC` Iterative filtering

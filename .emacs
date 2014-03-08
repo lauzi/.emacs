@@ -18,7 +18,7 @@
     undo-tree
     icicles lacarte
     multiple-cursors
-    ido-vertical-mode ido-hacks
+    ido-vertical-mode ido-hacks ido-better-flex ido-ubiquitous flex-isearch ; flex-isearch: ido for isearch
 
 ;; utilities
     dired+ gist powershell xkcd
@@ -389,9 +389,28 @@ If point was already at that position, move point to beginning of line."
 (add-to-list 'sml/hidden-modes " Doc")
 (add-to-list 'sml/hidden-modes " yas")
 
-; ido-mode
+
+;; ido-mode
+; sort ido filelist by mtime instead of alphabetically
+  (add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
+  (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
+  (defun ido-sort-mtime ()
+    (setq ido-temp-list
+          (sort ido-temp-list
+                (lambda (a b)
+                  (time-less-p
+                   (sixth (file-attributes (concat ido-current-directory b)))
+                   (sixth (file-attributes (concat ido-current-directory a)))))))
+    (ido-to-end  ;; move . files to end (again)
+     (delq nil (mapcar
+                (lambda (x) (and (char-equal (string-to-char x) ?.) x))
+                ido-temp-list))))
+
+;;
+
 (ido-mode t)
 ;(ido-vertical-mode t)
+
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
