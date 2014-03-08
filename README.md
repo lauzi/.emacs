@@ -53,9 +53,11 @@
 [GitHub Repo](https://github.com/chrisdone/structured-haskell-mode)
 
 #### Setup ####
-1.```bash
-$ git clone https://github.com/chrisdone/structured-haskell-mode.git
-$ cd structured-haskell-mode
-$ cabal install
-```
+1. Compile the executive
+
+   ```bash
+   $ git clone https://github.com/chrisdone/structured-haskell-mode.git
+   $ cd structured-haskell-mode
+   $ cabal install
+   ```
 2. Add `C:\Users\LauZi\AppData\Roaming\Cabal\bin\` to `PATH`
