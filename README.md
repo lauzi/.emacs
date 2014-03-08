@@ -13,6 +13,9 @@
 [DLLs needed for picture viewing](https://code.google.com/p/emacs4win/source/browse/#git%2Fdlls)
 
 ## How To ##
+### Blablabla ###
+* `C_=` er/expand-region
+
 ### Undo-tree ###
 * `C-x u` 進入 undo-tree-visualizer-mode
 * `p` `n` 上下移動
@@ -31,3 +34,16 @@
 * `r` Load a random xkcd
 * `t` Show alt-text in the minibuffer
 * `e` Link to explain-xkcd
+
+### IDO ###
+* `Enter` Current selection
+* `C-n`, `C-p` Navigating
+* `M-n`, `M-p` Change to previous/next directories in history
+* `M-s` Search for file matching input
+* `C-SPC` Iterative filtering
+* `C-f` find file without ido-mode; `C-b` buffer
+* `C-d` Enter dired
+* `C-j` Create file
+
+### Magit ###
+[Cheatsheet](http://daemianmack.com/magit-cheatsheet.html)

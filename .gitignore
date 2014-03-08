@@ -5,5 +5,9 @@
 .emacs.d/auto-save-list/*
 .bash_history
 
+.emacs.d/.mc-lists.el
+
 .emacs.d/xkcd/*
 .emacs.d/url/cookies
+
+.ido.last

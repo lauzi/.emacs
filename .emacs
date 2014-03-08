@@ -18,14 +18,17 @@
     undo-tree
     icicles lacarte
     multiple-cursors
+    ido-vertical-mode ido-hacks
 
 ;; utilities
     dired+ gist powershell xkcd
-;;; magit magit-push-remote
+    magit magit-push-remote
 
 ;; global text exts
     paredit rainbow-mode volatile-highlights
     pretty-mode smartparens
+    flycheck flycheck-haskell
+    yasnippet
 
 ;; languages
     auctex coffee-mode haskell-mode enh-ruby-mode inf-ruby
@@ -381,3 +384,26 @@ If point was already at that position, move point to beginning of line."
 
 (add-to-list 'sml/hidden-modes " SP")
 (add-to-list 'sml/hidden-modes " Undo-Tree")
+(add-to-list 'sml/hidden-modes " MRev")
+(add-to-list 'sml/hidden-modes " Ind")
+(add-to-list 'sml/hidden-modes " Doc")
+(add-to-list 'sml/hidden-modes " yas")
+
+; ido-mode
+(ido-mode t)
+;(ido-vertical-mode t)
+
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook 'flycheck-haskell-setup))
+(eval-after-load 'flycheck
+  '(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
+;; yasnippet
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
+(setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
+
+(yas-global-mode t)
