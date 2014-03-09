@@ -67,6 +67,8 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 
+; (setq file-name-coding-system 'japanese-shift-jis-dos)
+
 (setq user-full-name "LauZi")
 (setq user-mail-address "st61112@gmail.com")
 
@@ -352,10 +354,16 @@ If point was already at that position, move point to beginning of line."
 		".cache/" ".dropbox/" ".git/"
 		".BIN/" "System Volume Information/")))  ;; trailing / means directory
 
-;; do not list those shit in dired+
+
+;; Dired+
+(define-key dired-mode-map (kbd "<mouse-2>") 'dired-find-file)
+
 (add-hook 'dired-mode-hook
-	  (lambda ()
-	    (dired-omit-mode 1)))
+	  (progn
+	    (dired-omit-mode 1)
+	    ))
+
+;; do not list those shit in dired+
 (setq dired-omit-files
       "^\\.?#\\|^\\.$^\\.?#\\|^\\.$\\|$RECYCLE\\.BIN\\|System Volume Information\\|\\.dropbox.*\\|.git\\|.*\\.hi")
 
@@ -408,7 +416,7 @@ If point was already at that position, move point to beginning of line."
 (add-to-list 'sml/hidden-modes " Ind")
 (add-to-list 'sml/hidden-modes " Doc")
 (add-to-list 'sml/hidden-modes " yas")
-
+(add-to-list 'sml/hidden-modes " SHM")
 
 ;; ido-mode
 ; sort ido filelist by mtime instead of alphabetically
