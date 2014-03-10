@@ -359,7 +359,7 @@ If point was already at that position, move point to beginning of line."
 (define-key dired-mode-map (kbd "<mouse-2>") 'dired-find-file)
 
 (add-hook 'dired-mode-hook
-	  (progn
+	  (lambda ()
 	    (dired-omit-mode 1)
 	    ))
 
