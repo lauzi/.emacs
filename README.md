@@ -15,6 +15,7 @@
 ## How To ##
 ### Blablabla ###
 * `C-=` er/expand-region
+* `M-` lacarte
 
 ### Undo-tree ###
 * `C-x u` 進入 undo-tree-visualizer-mode
@@ -61,3 +62,8 @@
    $ cabal install
    ```
 2. Add `C:\Users\LauZi\AppData\Roaming\Cabal\bin\` to `PATH`
+
+### Org-Mode ###
+* [Cheatsheet](http://emacsclub.github.io/html/org_tutorial.html)
+* `C-c .` Insert timestamp
+* `C-c C-t` Mark TODO
