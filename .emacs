@@ -47,6 +47,7 @@
     python
     scala-mode2
     haskell-mode shm ; Structured-Haskell-Mode
+    org
 )
   "A list of packages to ensure are installed at launch.")
 
@@ -325,7 +326,6 @@ If point was already at that position, move point to beginning of line."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
-;(setq shm-program-name "C:\\Users\\LauZi\\appdata\\roaming\\cabal\\bin\\structured-haskell-mode")
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 
 (setq haskell-font-lock-symbols t)
@@ -454,3 +454,11 @@ If point was already at that position, move point to beginning of line."
 (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
 
 (yas-global-mode t)
+
+
+;; org-mode
+(setq org-pretty-entities t)
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (define-key org-mode-map (kbd "C-\'") nil)))
+;; end org-mode
