@@ -67,3 +67,8 @@
 * [Cheatsheet](http://emacsclub.github.io/html/org_tutorial.html)
 * `C-c .` Insert timestamp
 * `C-c C-t` Mark TODO
+
+### Ace-jump-mode ###
+* `C-c SPC`/`C-c C-SPC` Jump to word
+* `C-u C-c SPC` Jump to char
+* `C-u C-u C-c SPC` Jump to line

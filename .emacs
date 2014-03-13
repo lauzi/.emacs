@@ -31,6 +31,7 @@
     powershell
     xkcd
     magit magit-push-remote
+    ace-jump-mode
 
 ;; global text exts
     paredit
@@ -478,5 +479,8 @@ If point was already at that position, move point to beginning of line."
 	  (lambda ()
 	    (define-key org-mode-map (kbd "C-\'") nil)))
 ;; end org-mode
+
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
 
 (setq debug-on-error t)
