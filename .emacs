@@ -21,7 +21,8 @@
     undo-tree
     icicles lacarte
     multiple-cursors
-    ido-vertical-mode ido-hacks ido-better-flex ido-ubiquitous flex-isearch ; flex-isearch: ido for isearch
+    ido-vertical-mode ido-hacks ido-better-flex ido-ubiquitous smex
+    flx-ido flex-isearch
 
 ;; utilities
     dired+
@@ -63,6 +64,10 @@
 
 
 ;; Settings
+
+; Garbage collect per 200MB allocaled; for flx
+(setq gc-cons-threshold 200000000)
+
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -80,7 +85,6 @@
 ;; Disable input methods
 (global-unset-key (kbd "C-\\"))
 
-(require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-\\") 'er/expand-region)
 (global-set-key (kbd "C-|") 'er/contract-region)
@@ -92,7 +96,6 @@
 (global-unset-key "\C-z")
 (global-unset-key (kbd "C-x C-z"))
 
-(require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -121,7 +124,6 @@
 
 (global-set-key [(control ?\')] 'other-window)  ;; C-'
 
-(require 'lacarte)
 (global-set-key [?\e ?\M-x] 'lacarte-execute-command)  ;; ESC M-x
 (global-set-key [?\M-`] 'lacarte-execute-command)      ;; M-`
 
@@ -141,18 +143,14 @@
 (setq tab-width 4)
 
 
-(require 'linum)
 (global-linum-mode t)
 
 (setq column-number-mode t)
 (setq size-indication-mode t)
 
 
-(require 'dired+)
-
 (mouse-avoidance-mode 'animate)
 
-(require 'icicles)
 (icy-mode 1)
 
 
@@ -338,7 +336,6 @@ If point was already at that position, move point to beginning of line."
 
 
 ;; uniquify buffer names
-(require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)  ; must set, or uniquify will not work
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 ; (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
@@ -369,7 +366,6 @@ If point was already at that position, move point to beginning of line."
 
 ; (add-hook 'prog-mode-hook (lambda () (idle-highlight t)))
 
-(require 'undo-tree)
 (global-undo-tree-mode)
 
 ; ruby
@@ -388,8 +384,6 @@ If point was already at that position, move point to beginning of line."
 
 
 ; smartparens
-(require 'smartparens-config)
-(require 'smartparens-ruby)
 (smartparens-global-mode)
 (show-smartparens-global-mode t)
 (sp-with-modes '(rhtml-mode)
@@ -434,18 +428,37 @@ If point was already at that position, move point to beginning of line."
                 (lambda (x) (and (char-equal (string-to-char x) ?.) x))
                 ido-temp-list))))
 
-;;
-
 (ido-mode t)
+(ido-everywhere t)
+(flx-ido-mode t)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+;If don't want to use the flx's highlights you can turn them off like this:
+(setq flx-ido-use-faces nil)
 ;(ido-vertical-mode t)
+
+(flex-isearch-mode t)
+
+;; smex
+(smex-initialize) ; preload on setup
+
+(global-set-key (kbd "M-x") 'smex)
+
+; Commands related to current major mode
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;;
 
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook 'flycheck-haskell-setup))
-(eval-after-load 'flycheck
-  '(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  (lambda ()
+    (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)))
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 ;; yasnippet
 (setq yas-snippet-dirs
@@ -462,3 +475,5 @@ If point was already at that position, move point to beginning of line."
 	  (lambda ()
 	    (define-key org-mode-map (kbd "C-\'") nil)))
 ;; end org-mode
+
+(setq debug-on-error t)

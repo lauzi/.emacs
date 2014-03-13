@@ -12,5 +12,6 @@
 .emacs.d/url/cookies
 
 .ido.last
+.smex-items
 
 *flycheck*
