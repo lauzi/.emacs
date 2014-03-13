@@ -23,6 +23,7 @@
     multiple-cursors
     ido-vertical-mode ido-hacks ido-better-flex ido-ubiquitous smex
     flx-ido flex-isearch
+    goto-last-change
 
 ;; utilities
     dired+
@@ -126,6 +127,8 @@
 
 (global-set-key [?\e ?\M-x] 'lacarte-execute-command)  ;; ESC M-x
 (global-set-key [?\M-`] 'lacarte-execute-command)      ;; M-`
+
+(global-set-key (kbd "C-x C-/") 'goto-last-change)
 
 ;;; highlight ()
 (color-theme-molokai)
