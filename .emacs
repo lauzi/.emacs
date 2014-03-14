@@ -483,4 +483,7 @@ If point was already at that position, move point to beginning of line."
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 (setq debug-on-error t)
