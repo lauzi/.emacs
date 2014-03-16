@@ -72,3 +72,7 @@
 * `C-c SPC`/`C-c C-SPC` Jump to word
 * `C-u C-c SPC` Jump to char
 * `C-u C-u C-c SPC` Jump to line
+
+### Projectile ###
+* `C-c p f` Find file in project
+* `C-c p g` Find text matches in project

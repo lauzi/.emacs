@@ -15,3 +15,5 @@
 .smex-items
 
 *flycheck*
+
+.emacs.d/projectile*

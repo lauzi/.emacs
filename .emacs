@@ -32,6 +32,7 @@
     xkcd
     magit magit-push-remote
     ace-jump-mode
+    projectile
 
 ;; global text exts
     paredit
@@ -403,8 +404,8 @@ If point was already at that position, move point to beginning of line."
 
 ;; ido-mode
 ; sort ido filelist by mtime instead of alphabetically
-  (add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
-  (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
+;  (add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
+;  (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
   (defun ido-sort-mtime ()
     (setq ido-temp-list
           (sort ido-temp-list
@@ -420,6 +421,7 @@ If point was already at that position, move point to beginning of line."
 (ido-mode t)
 (ido-everywhere t)
 (flx-ido-mode t)
+(ido-ubiquitous)
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 ;If don't want to use the flx's highlights you can turn them off like this:
@@ -470,5 +472,12 @@ If point was already at that position, move point to beginning of line."
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+
+;; projectile
+(setq projectile-indexing-method 'native) ; only needed on windows
+(projectile-global-mode)
+
+;; projectile
 
 (setq debug-on-error t)
