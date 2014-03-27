@@ -76,3 +76,10 @@
 ### Projectile ###
 * `C-c p f` Find file in project
 * `C-c p g` Find text matches in project
+
+### God-mode ###
+* `C-z` Enter global god mode
+* `xs` -> `C-x C-s`
+* `x s` -> `C-x s`
+* `gf` -> `M-f`
+* `Gx` -> `C-M-x`

@@ -42,6 +42,7 @@
     smartparens
     flycheck flycheck-haskell
     yasnippet
+    god-mode
 
 ;; languages
     auctex
@@ -92,11 +93,11 @@
 (global-set-key (kbd "C-\\") 'er/expand-region)
 (global-set-key (kbd "C-|") 'er/contract-region)
 
-(global-set-key "\M-r" 'replace-string)
-(global-set-key "\M-g" 'goto-line)
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-(global-unset-key "\C-z")
+(global-set-key (kbd "M-r") 'replace-string)
+(global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-c C-m") 'execute-extended-command)
+(global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x C-z"))
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -119,9 +120,9 @@
 (global-set-key (kbd "C-%") 'match-paren)
 
 (global-set-key [home] 'smart-beginning-of-line)
-(global-set-key "\C-a" 'smart-beginning-of-line)
+(global-set-key (kbd "C-a") 'smart-beginning-of-line)
 
-(global-set-key "\M-k" 'qiang-copy-line)
+(global-set-key (kbd "M-k") 'qiang-copy-line)
 
 (global-set-key [f1] 'shell)
 
@@ -131,6 +132,8 @@
 (global-set-key [?\M-`] 'lacarte-execute-command)      ;; M-`
 
 (global-set-key (kbd "C-x C-/") 'goto-last-change)
+
+(global-set-key (kbd "C-z") 'god-mode-all)  ; 'god-local-mode
 
 ;;; highlight ()
 (color-theme-molokai)
@@ -479,5 +482,23 @@ If point was already at that position, move point to beginning of line."
 (projectile-global-mode)
 
 ;; projectile
+
+;; God-mode
+(defun my-update-cursor ()
+  (setq cursor-type (if (or god-local-mode buffer-read-only)
+                        'box
+                      'bar)))
+
+(add-hook 'god-mode-enabled-hook 'my-update-cursor)
+(add-hook 'god-mode-disabled-hook 'my-update-cursor)
+
+(global-set-key (kbd "C-x C-1") 'delete-other-windows)
+(global-set-key (kbd "C-x C-2") 'split-window-below)
+(global-set-key (kbd "C-x C-3") 'split-window-right)
+(global-set-key (kbd "C-x C-0") 'delete-window)
+
+;(define-key god-local-mode-map (kbd "i") 'god-local-mode)
+
+;; end god-mode
 
 (setq debug-on-error t)
