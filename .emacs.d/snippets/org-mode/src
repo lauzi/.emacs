@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# key: src
+# name: #+BEGIN_SRC ... #+END_SRC
+# condition: (= (length "src") (current-column))
+# expand-env: ((yas-indent-line 'fixed))
+# contributor: Luke Hoersten <luke@hoersten.org>
+# --
+#+BEGIN_SRC ${1:haskell} [${2:-n}]
+$0
+#+END_SRC
