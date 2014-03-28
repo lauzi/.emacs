@@ -392,7 +392,6 @@ If point was already at that position, move point to beginning of line."
 (setq sml/shorten-directory nil)
 (setq sml/shorten-modes nil)
 
-(add-to-list 'sml/replacer-regexp-list '("^G:/" ":Git:"))
 (add-to-list 'sml/replacer-regexp-list '("^:Scala:gameData/src/main/scala/" ":gameData:"))
 (add-to-list 'sml/replacer-regexp-list '("^:DB:scala/" ":Scala:"))
 (add-to-list 'sml/replacer-regexp-list '("^D:/Dropbox/" ":DB:"))

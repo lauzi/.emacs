@@ -8,6 +8,8 @@
 (setq default-directory "D:\\git")
 
 (custom-set-variables '(initial-buffer-choice "D:\\git"))
+
+(add-to-list 'sml/replacer-regexp-list '("^G:/" ":Git:"))
 ```
 
 [DLLs needed for picture viewing](https://code.google.com/p/emacs4win/source/browse/#git%2Fdlls)
