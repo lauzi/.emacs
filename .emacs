@@ -84,8 +84,6 @@
 
 (setq load-path (cons (expand-file-name "~/.emacs.d/lisp/") load-path))
 
-(load "~/.emacs.d/local")
-
 ;; Disable input methods
 (global-unset-key (kbd "C-\\"))
 
@@ -406,7 +404,6 @@ If point was already at that position, move point to beginning of line."
 (setq sml/shorten-directory nil)
 (setq sml/shorten-modes nil)
 
-(add-to-list 'sml/replacer-regexp-list '("^G:/" ":Git:"))
 (add-to-list 'sml/replacer-regexp-list '("^:Scala:gameData/src/main/scala/" ":gameData:"))
 (add-to-list 'sml/replacer-regexp-list '("^:DB:scala/" ":Scala:"))
 (add-to-list 'sml/replacer-regexp-list '("^D:/Dropbox/" ":DB:"))
@@ -514,5 +511,7 @@ If point was already at that position, move point to beginning of line."
 ;(define-key god-local-mode-map (kbd "i") 'god-local-mode)
 
 ;; end god-mode
+
+(load "~/.emacs.d/local")
 
 (setq debug-on-error t)
