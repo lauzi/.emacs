@@ -2,4 +2,4 @@
 # name: print
 # key: pr
 # --
-print $0
+print $ $0

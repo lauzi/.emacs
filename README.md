@@ -85,3 +85,11 @@
 * `x s` -> `C-x s`
 * `gf` -> `M-f`
 * `Gx` -> `C-M-x`
+
+### Yasnippet ###
+#### Snippet syntax ####
+* `$1` First field
+* `${1:n}` First field defaulted to n
+* `$1 $1` First field is automatically copied
+* `${1:${2:a} $2}` Nested templates
+* `C-c C-t` Test current template

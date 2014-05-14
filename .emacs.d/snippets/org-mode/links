@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# key: [
+# name: [[Link][Text]]
+# expand-env: ((yas-indent-line 'fixed))
+# --
+[[$1][$2]$0
