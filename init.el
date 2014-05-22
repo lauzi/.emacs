@@ -122,7 +122,7 @@
 
 (global-set-key (kbd "M-k") 'qiang-copy-line)
 
-(global-set-key [f1] 'shell)
+(global-set-key (kbd "<f1>") 'ansi-term)
 
 (global-set-key [(control ?\')] 'other-window)  ;; C-'
 
@@ -141,6 +141,7 @@
 
 (nyan-mode 1)
 
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -165,13 +166,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq make-backup-files nil)
-
-;; http://stackoverflow.com/questions/235254
-(setq explicit-shell-file-name "C:/Program Files (x86)/Git/bin/bash")
-(setq shell-file-name explicit-shell-file-name)
-(add-to-list 'exec-path "C:/Program Files (x86)/Git/bin")
-(setq explicit-bash-args '("--login" "-i"))
-(setenv "SHELL" shell-file-name)
 
 ;; FUCK VC-MODE
 (setq vc-handled-backends ())
