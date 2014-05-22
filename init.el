@@ -171,6 +171,9 @@
 (setq vc-handled-backends ())
 ;;; end Settings
 
+;; Fix bug that yas makes ansi-term inable to auto complete
+(add-hook 'term-mode-hook (lambda()
+        (setq yas-dont-activate t)))
 
 ;; Addons
 (defadvice comment-or-uncomment-region (before slickcomment activate compile)
