@@ -43,6 +43,7 @@
     flycheck flycheck-haskell
     yasnippet
     god-mode
+    rainbow-delimiters
 
 ;; languages
     auctex
@@ -134,8 +135,11 @@
 (global-set-key (kbd "C-z") 'god-mode-all)  ; 'god-local-mode
 
 ;;; highlight ()
+(custom-set-variables
+ '(custom-safe-themes (quote ("025354235e98db5e7fd9c1a74622ff53ad31b7bde537d290ff68d85665213d85" default))))
+
 (color-theme-molokai)
-(set-face-attribute 'default nil :font "Consolas-12")
+(set-face-attribute 'default nil :font "Dejavu Sans Mono-12")
 (setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
 
@@ -151,6 +155,8 @@
 
 
 (global-linum-mode t)
+
+(global-rainbow-delimiters-mode)
 
 (setq column-number-mode t)
 (setq size-indication-mode t)
