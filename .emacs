@@ -1,8 +1,8 @@
 ;; use package.el to install packages
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ));;("gnu" . "http://elpa.gnu.org/packages/")))
 
 (eval-when-compile (require 'cl))
 
@@ -36,6 +36,7 @@
 
 ;; global text exts
     paredit
+    rainbow-delimiters
     rainbow-mode
     volatile-highlights
     pretty-mode
@@ -134,18 +135,23 @@
 (global-set-key (kbd "C-z") 'god-mode-all)  ; 'god-local-mode
 
 ;;; highlight ()
+(custom-set-variables
+ '(custom-safe-themes (quote ("6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "025354235e98db5e7fd9c1a74622ff53ad31b7bde537d290ff68d85665213d85" default))))
+
 (color-theme-molokai)
 (set-face-attribute 'default nil :font "Consolas-12")
 (setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
 
 (nyan-mode 1)
+(sublimity-mode 1)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
 
 (show-paren-mode 1)
+; (global-rainbow-delimiters-mode)
 (setq tab-width 4)
 
 
@@ -200,6 +206,7 @@
 	       (define-key c-mode-base-map [(f9)] 'compile)
 	       (define-key c-mode-base-map [(meta \')] 'c-indent-command)
 	       (define-key c-mode-base-map "\M-;" 'comment-or-uncomment-region)
+	       (rainbow-delimiters-mode)
            )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
@@ -314,8 +321,7 @@ If point was already at that position, move point to beginning of line."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-
-(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+(add-hook 'haskell-mode-hook 'rainbow-delimiters-mode)
 
 (setq haskell-font-lock-symbols t)
 
@@ -479,6 +485,8 @@ If point was already at that position, move point to beginning of line."
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (define-key org-mode-map (kbd "C-\'") nil)))
+
+(setq org-list-allow-alphabetical t)
 ;; end org-mode
 
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -512,6 +520,10 @@ If point was already at that position, move point to beginning of line."
 
 ;; end god-mode
 
+(setq mode-require-final-newline nil)
+
 (load "~/.emacs.d/local")
 
-(setq debug-on-error t)
+(setq flycheck-gcc-language-standard "c++11")
+
+; (setq debug-on-error t)
