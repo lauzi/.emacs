@@ -142,7 +142,6 @@
 (set-face-attribute 'default nil :font "Consolas-12")
 (setq frame-title-format "Emacs 24 @ %b")  ;; show buffername in title
 
-
 (nyan-mode 1)
 (sublimity-mode 1)
 
@@ -244,6 +243,16 @@ If point was already at that position, move point to beginning of line."
 ; begin auto-insert for .sh
 (define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
 (define-auto-insert 'ptyhon-mode '(nil "#!/usr/bin/python\n\n"))
+(define-auto-insert
+  '("\\.\\(CC?\\|cc\\|cxx\\|cpp\\|c++\\)\\'" . "C++ skeleton")
+  '("C++11: "
+    "#include <bits/stdc++.h>" \n \n
+    "using namespace std;" \n \n
+    "int main() {" \n
+    > _ \n
+    "return 0;" \n
+    "}" >
+))
 (add-hook 'find-file-hooks 'auto-insert)
 
 
