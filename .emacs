@@ -214,6 +214,10 @@
 (add-to-list 'default-frame-alist '(width . 80))
 (setq kill-whole-line t) ; makes kill-line remove whole line
 
+(add-hook 'java-mode-hook (lambda ()
+                                (setq c-basic-offset 4
+                                      tab-width 4
+                                      indent-tabs-mode t)))
 
 ;start smart-beginning-of-line
 (defun smart-beginning-of-line ()
