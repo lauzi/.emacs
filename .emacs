@@ -70,8 +70,9 @@
 
 ;; Settings
 
-; Garbage collect per 200MB allocaled; for flx
-(setq gc-cons-threshold 200000000)
+; Garbage collect per 50MB allocaled; for flx
+; Fix from 200MB to 50MB: 150102
+(setq gc-cons-threshold 50000000)
 
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
