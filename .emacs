@@ -60,6 +60,8 @@
 )
   "A list of packages to ensure are installed at launch.")
 
+(setq package-check-signature nil)
+
 (package-initialize)
 ;; check if the packages is installed; if not, install it.
 (let ((xs (remove-if 'package-installed-p my-packages)))
